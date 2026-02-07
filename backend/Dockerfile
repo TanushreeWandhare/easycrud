@@ -3,6 +3,7 @@ FROM maven:3.8.3-openjdk-17
 COPY . /opt/
 
 WORKDIR /opt
+COPY src/main/resources/application.properties /opt/application.properties
 
 RUN rm -f ./src/main/resources/application.properties && \
     cp -f application.properties ./src/main/resources/application.properties && \
