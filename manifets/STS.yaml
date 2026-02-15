@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-sts
+  labels:
+    app: app-db
+Spec:
+  Replicas: 1
+  template:
+    metadata:
+      labels: 
+        app: app-db
+    Spec:
+      containers:
+        -name: db-container
+         image: mariadb:latest
+         ports:
+          -containerPort: 3306
+        env:
+            name: mariadb:latest
+          valueFrom:
+            SecretKeyRef:
+              name: my-secret
+              key: mysql_pass
+
+
+          
+
