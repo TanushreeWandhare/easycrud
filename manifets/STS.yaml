@@ -5,6 +5,9 @@ metadata:
   labels:
     app: app-db
 Spec:
+  selector:
+  matchLabels:
+    app: app-db
   Replicas: 1
   template:
     metadata:
