@@ -1,17 +1,15 @@
-FROM maven:3.8.3-openjdk-17
-
-COPY . /opt/
+FROM maven:3.8.3-openjdk-17 AS build
 
 WORKDIR /opt
-COPY src/main/resources/application.properties /opt/application.properties
 
-RUN rm -f ./src/main/resources/application.properties && \
-    cp -f application.properties ./src/main/resources/application.properties && \
-    mvn clean package -DskipTests
+COPY . .
 
-WORKDIR target/
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17.0.2-jdk
+
+COPY --from=build /opt/target/student-registration-backend-0.0.1-SNAPSHOT.jar /opt/studentapp.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar"]
-CMD ["student-registration-backend-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/opt/studentapp.jar"]
