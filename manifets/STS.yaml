@@ -13,7 +13,7 @@ Spec:
     metadata:
       labels: 
         app: app-db
-    Spec:
+    spec:
       containers:
         -name: db-container
          image: mariadb:latest
