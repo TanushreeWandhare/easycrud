@@ -15,16 +15,19 @@ Spec:
         app: app-db
     spec:
       containers:
-        -name: db-container
+        - name: db-container
          image: mariadb:latest
          ports:
-          -containerPort: 3306
+          - containerPort: 3306
         env:
             name: mariadb:latest
           valueFrom:
             SecretKeyRef:
               name: my-secret
               key: mysql_pass
+            - name: MARIADB_DATABASE
+              value: studentapp
+
 
 
           
