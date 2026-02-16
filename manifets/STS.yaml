@@ -1,34 +1,28 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: my-sts
+  name: studentapp-db
   labels:
-    app: app-db
-Spec:
+    app: studentapp-db
+spec:
   selector:
-  matchLabels:
-    app: app-db
-  Replicas: 1
+    matchLabels:
+      app: studentapp-db
+  replicas: 1
   template:
     metadata:
-      labels: 
-        app: app-db
+      labels:
+        app: studentapp-db
     spec:
       containers:
-        - name: db-container
-         image: mariadb:latest
-         ports:
-          - containerPort: 3306
+      - name: studentapp
+        image: mariadb:latest
+        ports:
+        - containerPort: 3306
         env:
-            name: mariadb:latest
-          valueFrom:
+          - name: "MARIADB_ROOT_PASSWORD"
             SecretKeyRef:
               name: my-secret
               key: mysql_pass
-            - name: MARIADB_DATABASE
-              value: studentapp
-
-
-
-          
-
+          - name: "MARIADB_DATABASE"
+            value: "studentapp-db"
