@@ -4,10 +4,10 @@ metadata:
   name: my-svc
   labels:
     app: app-db
-Spec:
+spec:
   selector: 
     app: app-db
   ports:
     - port: 3306
-     targetPort: 3306
+      targetPort: 3306
 
