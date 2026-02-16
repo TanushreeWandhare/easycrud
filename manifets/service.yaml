@@ -5,8 +5,9 @@ metadata:
   labels:
     app: app-db
 Spec:
-  selector: app-db
+  selector: 
+    app: app-db
   ports:
-    -port: 3306
+    - port: 3306
      targetPort: 3306
 
