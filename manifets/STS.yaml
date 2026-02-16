@@ -20,9 +20,10 @@ spec:
         ports:
         - containerPort: 3306
         env:
-          - name: "MARIADB_ROOT_PASSWORD"
-            SecretKeyRef:
+        - name: MARIADB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
               name: my-secret
               key: mysql_pass
-          - name: "MARIADB_DATABASE"
-            value: "studentapp-db"
+        - name: MARIADB_DATABASE
+          value: studentapp-db
