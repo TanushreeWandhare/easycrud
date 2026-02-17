@@ -3,10 +3,10 @@ kind: Service
 metadata: 
   name: my-svc
   labels:
-    app: studentapp-app-db
+    app: studentapp-db
 spec:
   selector: 
-    app: studentapp-app-db
+    app: studentapp-db
   ports:
     - port: 3306
       targetPort: 3306
