@@ -16,14 +16,15 @@ spec:
         labels: 
           app: studentapp-frontend
       spec:
-        - name: studentapp-frontend
-          image: tanushreew/frontend:latest
-          resources:
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-            requests:
-              memory: "128Mi"
-              cpu: "400m"
-          ports:
-          - containerPort: 80
+        containers:
+          - name: studentapp-frontend
+            image: tanushreew/frontend:latest
+            resources:
+              limits:
+                memory: "256Mi"
+                cpu: "500m"
+              requests:
+                memory: "128Mi"
+                cpu: "400m"
+            ports:
+            - containerPort: 80
