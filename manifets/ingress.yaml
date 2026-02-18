@@ -14,7 +14,7 @@ spec:
         path: "/api"
         backend:
           service: 
-            name:  studentapp-svc
+            name: studentapp-svc
             port: 
               number: 8080
 
